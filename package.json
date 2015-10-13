@@ -1,0 +1,19 @@
+{
+  "name": "mean_project_tutorial",
+  "version": "1.0.0",
+  "description": "MEAN Technique",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "keywords": [
+    "MEAN"
+  ],
+  "author": "Gurpreet Singh",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.14.1",
+    "ejs": "^2.3.4",
+    "express": "^4.13.3"
+  }
+}
