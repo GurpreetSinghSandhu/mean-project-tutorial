@@ -2,18 +2,25 @@
 <html lang="en">
   <head>
     <% include partials/pages/head.ejs %>
+    <style>
+        .error 
+        {
+            position:absolute;
+            left:50%;
+            margin-left:-100px;
+        }
+    </style>
   </head>
   <body>
     <% include partials/pages/header.ejs %>
 
     <div class="container" style="padding-top: 40px">
         <div class="card card-container">
-            <!-- <img class="profile-img-card" src="//lh3.googleusercontent.com/-6V8xOA6M7BA/AAAAAAAAAAI/AAAAAAAAAAA/rzlHcD0KYwo/photo.jpg?sz=120" alt="" /> -->
             <img id="profile-img" class="profile-img-card" src="//ssl.gstatic.com/accounts/ui/avatar_2x.png" />
             <p id="profile-name" class="profile-name-card"></p>
             <form class="form-signin" method="post" action="/login">
                 <span id="reauth-email" class="reauth-email"></span>
-                <input type="email" name="emailid" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
+                <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
                 <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
                 <div id="remember" class="checkbox">
                     <label>
@@ -22,11 +29,26 @@
                 </div>
                 <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign in</button>
             </form><!-- /form -->
-            <<a href="#" class="forgot-password">
+            <a href="#" class="forgot-password">
                 Forgot the password?
             </a>
+            <% if (typeof error !="undefined") { %>
+                <div style="color: red; text-align: center"><%= error %></div>
+            <% } %>
         </div><!-- /card-container -->
     </div>
+    <% include partials/pages/jsdefaults.ejs %>
+
+    
+            <!--<% if (typeof error !="undefined") { %>
+            <div class='error'><%= error %></div>
+            <script type="text/javascript">
+                $(".error").css('display',"block");
+                $(".error").addClass("alert alert-danger animated fadeInUp");
+            </script>
+            <% } else { if (typeof input !="undefined"){ %>
+                    <div class='error' style="display: none"><%= input.emailid %></div>
+            <% } } %> -->
 
     <!-- <div class="container" style="margin-top:50px">
         <div class="container">
@@ -48,7 +70,15 @@
 
       <% include partials/pages/footer.ejs %>
     
-      <% include partials/pages/jsdefaults.ejs %>
-
+      
+    <script type="text/javascript">
+        //setInterval(myrun,500);
+        /*function myrun()
+        {
+            if($(".error").css('display') != 'none'){
+                $(".error").addClass("alert alert-danger animated fadeInUp");
+            }
+        }*/
+    </script>
   </body>
 </html>

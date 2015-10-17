@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <% include partials/pages/head.ejs %>
+    <style>
+        .error 
+        {
+            position:absolute;
+            left:50%;
+            margin-left:-100px;
+            bottom: 515px;
+        }
+    </style>
+  </head>
+  <body>
+    <% include partials/pages/header.ejs %>
+
+    <div class="container" style="padding-top: 40px">
+        <div class="card card-container">
+            <h3 style="align:center">Sign up</h3>
+            <p id="profile-name" class="profile-name-card"></p>
+            <form class="form-signin" method="post" action="/signup" novalidate>
+                <input type="text" name="mid" id="id" class="form-control" placeholder="ID" required autofocus>
+                <input type="text" name="firstname" id="firstname" class="form-control" placeholder="First Name" required autofocus>
+                <input type="text" name="lastname" id="lastname" class="form-control" placeholder="Last Name" required>
+                <input type="email" name="emailid" id="emailid" class="form-control" placeholder="Email address" required >
+                <input type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+                <button class="btn btn-lg btn-primary btn-block btn-signin" type="submit">Sign up</button>
+            </form><!-- /form -->
+            Allready have a account
+            <a href="/login" class="forgot-password">
+                Sign in!
+            </a>
+        </div><!-- /card-container -->
+    </div>
+    <% include partials/pages/jsdefaults.ejs %>
+
+    <div class='error' style="display: none">
+            <% if (typeof error !="undefined") { %>
+            <script type="text/javascript">
+                $(".error").css('display',"block");
+                $(".error").addClass("alert alert-danger animated fadeInUp");
+            </script>
+                    <%= error %>
+            <% } else { if (typeof message !="undefined"){ %>
+            <script type="text/javascript">
+                $(".error").css('display',"block");
+                $(".error").addClass("alert alert-danger animated fadeInUp");
+            </script>
+                    <%= message %> : <%= input.firstname %> <%= input.lastname %>
+            <% } } %>
+    </div> 
+
+      <% include partials/pages/footer.ejs %>
+  </body>
+</html>

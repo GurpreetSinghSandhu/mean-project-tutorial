@@ -6,9 +6,20 @@ var router = express.Router();
 }*/
 
 router.get("/",function(req,res){
+	if(req.user)
+	{
+		return res.redirect("/users");
+	}
 	res.render("index",{
 		title : "Index Page"
 	});
 });
+
+router.get("/logout",function(req,res){
+	req.logout();
+	res.redirect("/");
+});
+
+
 
 module.exports = router;
